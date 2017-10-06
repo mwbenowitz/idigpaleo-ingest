@@ -1,0 +1,51 @@
+{
+    "testRecords": 10,
+    "supportDirectory": "[relative_path_to_support(with bin/caUtils)_directory]",
+    "mappingDirectory": "[relative_path_to_mapping_directory]",
+    "targetProjects": ["project_1", "project_2"],
+    "sources":{
+        "[institution_code]":{
+            "ipt": "[ipt_link]",
+            "collectionCriteria":[
+                {
+                    "id": "[unique_alphanumeric_code]",
+                    "target": "[target_project]",
+                    "filter": "[collection_title_regex_filter]",
+                    "dataMapping": "[XLSX_mapping_file_for_occurrences]",
+                    "mediaMapping": "[XLSX_mapping_file_for_media]"
+                }
+            ],
+            "validTargets": ["[project_1]"],
+            "idnoField": "[field_used_for_idno]",
+            "relatedField": "[field_with_related_occurrences]",
+            "relatedFieldRegex": "[regex_to_create_matches_for_related_occurrences]",
+            "relatedFieldReplace": "[related_occurrence_regex_replace_value]",
+            "mediaURLField": "[URL_field_in_media_file]",
+            "mediaIdnoField": "[idno_fied_in_media_file]",
+            "mediaIdnoRegex": "[regex_for_media_idno_to_match_occurrence_idno]",
+            "mediaIdnoReplace": "[media_idno_regex_replace_value]",
+            "filterCriteria":[
+                {
+                    "target": "[target_project]",
+                    "filterField": "[field_in_occurrence_to_filter_on]",
+                    "filterJSON": true,
+                    "filterDict": {
+                        "field": "[json_formatted_field_to_filter_on]",
+                        "values": ["value_1", "value_2", "etc"]
+                    },
+                    "filterValues": ["[leave_blank_if_json_true]"]
+                },
+                {
+                    "target": "[target_project]",
+                    "filterField": "[field_in_occurrence_to_filter_on]",
+                    "filterJSON": false,
+                    "filterDict": {
+                        "field": "[leave_blank_if_json_false]",
+                        "values": []
+                    },
+                    "filterValues": ["value_1", "value_2", "etc"]
+                }
+            ]
+        }
+    }
+}
