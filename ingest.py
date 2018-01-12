@@ -34,7 +34,7 @@ def main():
     # Get the parameters provided in the args
     parser = ingestHelpers.createParser()
     args = parser.parse_args()
-    ingestAll = args.all
+    ingestAll = args.ALL
     ingestSources = args.sources
     ingestTargets = args.projects
     testRun = args.test
@@ -43,7 +43,7 @@ def main():
     # Create the log
     logger = logHelpers.createLog('ingest', logLevel)
     logger.info("Starting " + str(ingestTargets) + " ingest")
-x
+
     # If we just want a list of instutions and targets, do that
     if args.listInstitutions:
         sources = config['sources']
