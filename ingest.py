@@ -11,6 +11,7 @@
 
 # core dependencies
 import sys
+import os
 import json
 import datetime
 import argparse
@@ -30,6 +31,7 @@ from helpers import logHelpers
 from helpers import collectiveAccessHelpers
 
 def main():
+    os.environ["COLLECTIVEACCESS_HOME"] = "/data/idigpaleo/admin"
     config = json.load(open('./config.json'))
     # Get the parameters provided in the args
     parser = ingestHelpers.createParser()

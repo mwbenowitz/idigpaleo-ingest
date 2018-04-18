@@ -128,7 +128,7 @@ def createCSVSource(source, ingestTargets, test):
                                         checkJSON = json.loads(filterValue)
                                     except:
                                         logger.warning("Could not read filter value in following row. SKIPPING")
-                                        logger.warning(row)
+                                        logger.debug(row)
                                         break
                                     if occFilter['filter']['field'] in checkJSON:
                                         checkFilter = [ val for val in occFilter['filter']['values'] if val in checkJSON[occFilter['filter']['field']] ]
@@ -213,9 +213,10 @@ def importCSVFiles(source, ingestTargets, csvFiles):
         if not occurrenceMappingCode:
             logger.error("Can't import from " + source + " Aborting import")
             return False
-        mediaMappingCode = collectiveAccessHelpers.loadImportMapping(mappingDirectory + mediaMapping, config['supportDirectory'])
-        if not mediaMappingCode:
-            logger.warning("Can't import media for " + source + " please review your mapping and retry")
+        if mediaMapping:
+            mediaMappingCode = collectiveAccessHelpers.loadImportMapping(mappingDirectory + mediaMapping, config['supportDirectory'])
+            if not mediaMappingCode:
+                logger.warning("Can't import media for " + source + " please review your mapping and retry")
         for csvFile in targetCSVs:
             logger.info("Importing " + csvFile)
             if 'occurrence' in csvFile:
